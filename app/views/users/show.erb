@@ -1,7 +1,7 @@
 <% current_user.animes.each do |anime|%>
 <br> <%=anime.title%><br>
 <%=anime.synopsis%><br>
- <%=anime.url%> <br>
+ <a href=<%=anime.url%>> Mal Link </a><br>
  <%=anime.user_notes%> <br>
  <a href="/animes/<%=anime.id%>/edit">Edit <%=anime.title%></a>
 <br><br>
