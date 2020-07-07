@@ -1,5 +1,9 @@
 ENV['SINATRA_ENV'] ||= "development"
 
+require 'open-uri'
+require 'net/http'
+require 'pry'
+require 'json'
 require 'bundler/setup'
 Bundler.require(:default, ENV['SINATRA_ENV'])
 require 'dotenv/load'

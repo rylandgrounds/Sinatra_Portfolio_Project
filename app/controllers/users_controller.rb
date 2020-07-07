@@ -6,36 +6,36 @@ class UsersController < ApplicationController
     end
 
     post '/signup' do
-        if params[:username] == "" || params[:password] == "" || params[:email] == ""
+        if params[:username] == "" || params[:password] == ""
             redirect to '/signup'
-          else
-            @user = User.create(:username => params[:username], :password => params[:password], :email => params[:email])
-            session[:user_id] = @user.id
-            redirect '/'
+        elsif  User.find_by(username: params[:username])
+            redirect to '/signup'
+        else
+            user = User.create(:username => params[:username], :password => params[:password])
+            session[:username] = user.username
+            erb :welcome
           end
+    end
+    
+    get '/user/animes' do
+        redirect_if_not_logged_in
+        erb :'users/show'
     end
 
     get '/login' do
-        if !session[:user_id]
+        if !session[:username]
             erb :'users/login'
         else
-            redirect '/'
+            erb :'users/show'
         end
     end
+    
     post '/login' do
-        user = User.find_by(:username => params[:username] ||params[:email])
-        if user && user.authenticate(params[:password])
-          session[:user_id] = user.id
-          redirect '/'
-        end
+       login(params[:username], params[:password])
     end
 
   get '/logout' do
-    if session[:user_id] != nil
-      session.destroy
-      redirect to '/login'
-    else
-      redirect to '/'
-    end
+    redirect_if_not_logged_in
+   logout!
   end
 end

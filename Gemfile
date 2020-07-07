@@ -12,7 +12,9 @@ gem 'pry'
 gem 'bcrypt'
 gem 'tux'
 gem 'dotenv'
-
+gem 'bigdecimal', '1.4.2'
+gem 'activemodel'
+gem 'activesupport'
 group :test do
   gem 'rspec'
   gem 'capybara'

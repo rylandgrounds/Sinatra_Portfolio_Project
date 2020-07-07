@@ -1,12 +1,26 @@
 <html> 
 <body>
-  <label>Hello Filthy Heretic</label>
 </body>
-<p>Please search an anime or sell your soul by signing up:</p>
 
 <nav>
-    <a href="/login"> Sign In </a>
+
+<% if logged_in? %>
+<label> Praise the Emperor <%=current_user.username %>!</label<br>
+<h1>Search for Heresy or view your currently saved list!</h1>
+<a href="/user/animes"> <%=current_user.username%>'s List </a>
+<form method="post" action="/search">
+  <input type="text" name="anime_name" placeholder="anime name">
+  <input type="submit" value="submit">
+</form>
+<a href="/logout"> logout </a><br>
+
+
+<% else %>
+<label>Hello Filthy Heretic!</label>
+<p>Please sell your soul to us by signing up for access to your personal Codex or login and renew your vows!</p>
+  <a href="/login"> Sign In </a><br>  
     <a href="/signup">Sign Up</a>
     <br><br>
-  
+   <%end %>
+</nav>
 </html>

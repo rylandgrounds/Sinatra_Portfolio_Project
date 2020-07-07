@@ -1,0 +1,13 @@
+<%=@anime.title%><br>
+<%=@anime.synopsis%><br>
+<%=@anime.url%><br>
+<form action="/animes/<%=@anime.id%>" method="post">
+  <input id="hidden" type="hidden" name="_method" value="patch">
+  <input type="text" name="user_notes">
+  <input type="submit" value="submit">
+</form>
+
+<form action="/animes/<%= @anime.id %>" method="post">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input type="submit" value="delete">
+</form>

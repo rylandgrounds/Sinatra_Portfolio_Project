@@ -11,9 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200628215048) do
+ActiveRecord::Schema.define(version: 20200707162803) do
 
-  create_table "medias", force: :cascade do |t|
+  create_table "animes", force: :cascade do |t|
     t.string  "mal_id"
     t.string  "title"
     t.string  "rated"
@@ -21,12 +21,15 @@ ActiveRecord::Schema.define(version: 20200628215048) do
     t.string  "url"
     t.integer "score"
     t.integer "user_id"
+    t.string  "image_url"
+    t.string  "airing"
+    t.integer "episodes"
+    t.string  "user_notes"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password_digest"
-    t.string "email"
   end
 
 end

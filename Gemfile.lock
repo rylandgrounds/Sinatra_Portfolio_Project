@@ -25,6 +25,7 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     arel (6.0.4)
     bcrypt (3.1.13)
+    bigdecimal (1.4.2)
     bond (0.5.1)
     builder (3.2.4)
     capybara (3.33.0)
@@ -119,8 +120,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activemodel
   activerecord (~> 4.2, >= 4.2.6)
+  activesupport
   bcrypt
+  bigdecimal (= 1.4.2)
   capybara
   database_cleaner!
   dotenv
