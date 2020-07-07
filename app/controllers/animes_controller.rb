@@ -30,24 +30,27 @@ class AnimesController < ApplicationController
 
     get '/animes/:id/edit' do
         redirect_if_not_logged_in
-        @anime = Anime.find_by(id: params[:id], user_id: current_user.id)
-        erb :'animes/edit'
+        if @anime = Anime.find_by(id: params[:id], user_id: current_user.id)
+            erb :'animes/edit'
+        else 
+         redirect   '/user/animes'
+        end
       end
 
 
       patch '/animes/:id' do 
         redirect_if_not_logged_in
-        @anime = Anime.find_by(id: params[:id])
+        @anime = Anime.find_by(id: params[:id], user_id: current_user.id)
         @anime.user_notes = params[:user_notes]
         @anime.save
-        erb :'users/show'
+        redirect '/'
       end
       
       delete '/animes/:id' do
         redirect_if_not_logged_in
         @anime = Anime.find_by(id: params[:id], user_id: current_user.id)
         @anime.delete
-        erb :'users/show'
+        redirect '/'
       end
 
 end
