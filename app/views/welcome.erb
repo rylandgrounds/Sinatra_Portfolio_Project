@@ -7,12 +7,11 @@
 <% if logged_in? %>
 <label>Welcome <%=current_user.username %>!</label<br>
 <h1>Search for Anime or view your currently saved list!</h1>
-<a href="/user/animes"> <%=current_user.username%>'s List </a>
 <form method="post" action="/search">
   <input type="text" name="anime_name" placeholder="anime name">
   <input type="submit" value="submit">
 </form>
-<a href="/logout"> logout </a><br>
+
 
 
 <% else %>
