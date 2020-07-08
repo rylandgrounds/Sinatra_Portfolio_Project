@@ -19,14 +19,14 @@ class UsersController < ApplicationController
     
     get '/user/animes' do
         redirect_if_not_logged_in
-        erb :'users/show'
+        erb :'users/index'
     end
 
     get '/login' do
         if !session[:user_id]
             erb :'users/login'
         else
-            erb :'users/show'
+            erb :'users/index'
         end
     end
     

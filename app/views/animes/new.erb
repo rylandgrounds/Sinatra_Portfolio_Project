@@ -1,0 +1,14 @@
+<% @results.each do|result|%>
+       <br><img src=<%=result["image_url"]%> alt="Anime Image" width="150" height="150" style="vertical-align:middle"> <br>
+       <br>Title: <%= result["title"]%> <br>
+       <br>Mal Id: <%=result["mal_id"]%><br>
+       <br>Synopsis: <%=result["synopsis"]%> <br>
+       <br><a href=<%=result["url"]%>> Mal Page</a><br>
+       <br>Current Status: <%=result["airing"]%><br>
+       <br>Number of Episodes: <%=result["episodes"]%><br><br>
+       <%end%>
+
+    <form method="post" action="/new">
+    <input type="text" name="anime_name" value="type the name you wish to save">
+        <input type="submit" value="save">
+    </form>

@@ -6,7 +6,7 @@ class AnimesController < ApplicationController
        if  params[:anime_name].size >=  3
             name = params[:anime_name].strip.downcase
             @results = edit_data(name)
-            erb  :'animes/show'
+            erb  :'animes/new'
        else
             redirect '/'
         end
@@ -23,35 +23,33 @@ class AnimesController < ApplicationController
                 if title.strip.downcase == name.strip.downcase
                 new_anime = current_user.animes.build(:mal_id => result.mal_id, :title => result.title, :rated => result.rated, :synopsis => result.synopsis, :url => result.url, :score => result.score, :user_notes  => 'No notes', :image_url => result.image_url, :airing=> result.airing, :episodes => result.episodes)
                 new_anime.save 
-                erb :'users/show'
+                redirect '/user/animes'
             end
         end
-        erb :'users/show'
+       redirect '/user/animes'
     end
 
     get '/animes/:id/edit' do
-        redirect_if_not_logged_in
-        if @anime = Anime.find_by(id: params[:id], user_id: current_user.id)
+        redirect_if_not_found
             erb :'animes/edit'
-        else 
-         redirect   '/user/animes'
-        end
       end
-
+      
+      get '/animes/:id' do
+        redirect_if_not_found
+        erb :'animes/show'
+        end
 
       patch '/animes/:id' do 
-        redirect_if_not_logged_in
-        @anime = Anime.find_by(id: params[:id], user_id: current_user.id)
+        redirect_if_not_found
         @anime.user_notes = params[:user_notes]
         @anime.save
         redirect '/'
       end
       
       delete '/animes/:id' do
-        redirect_if_not_logged_in
-        @anime = Anime.find_by(id: params[:id], user_id: current_user.id)
+        redirect_if_not_found
         @anime.delete
         redirect '/'
       end
-
+      
 end

@@ -42,7 +42,6 @@ class ApplicationController < Sinatra::Base
         redirect to '/'
     end
   end
-
   def current_user
      @current_user ||= User.find_by(:id => session[:user_id]) if session[:user_id]
     end
@@ -66,4 +65,13 @@ class ApplicationController < Sinatra::Base
     end
       animes
   end
+
+
+    def redirect_if_not_found
+      redirect_if_not_logged_in
+      @anime = Anime.find_by(id: params[:id], user_id: current_user.id)
+      if !@anime
+        redirect '/'
+      end
+    end
 end
