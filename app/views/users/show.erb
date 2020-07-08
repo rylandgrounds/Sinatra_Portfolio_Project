@@ -1,9 +1,9 @@
 <% current_user.animes.each do |anime|%>
+<img src=<%=anime.image_url%> alt="Anime Image" width="150" height="150" style="vertical-align:middle"> <br>
 <br> <%=anime.title%><br>
 <%=anime.synopsis%><br>
  <a href=<%=anime.url%>> Mal Link </a><br>
  <%=anime.user_notes%> <br>
- <a href="/animes/<%=anime.id%>/edit">Edit <%=anime.title%></a>
- <img src=<%=anime.image_url%> alt="Anime Image" width="150" height="150" style="vertical-align:middle"> <br>
+ <a href="/animes/<%=anime.id%>/edit">Add notes</a>
 <br><br>
     <%end%>

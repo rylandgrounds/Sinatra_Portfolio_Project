@@ -23,6 +23,7 @@ class AnimesController < ApplicationController
                 if title.strip.downcase == name.strip.downcase
                 new_anime = current_user.animes.build(:mal_id => result.mal_id, :title => result.title, :rated => result.rated, :synopsis => result.synopsis, :url => result.url, :score => result.score, :user_notes  => 'No notes', :image_url => result.image_url, :airing=> result.airing, :episodes => result.episodes)
                 new_anime.save 
+                erb :'users/show'
             end
         end
         erb :'users/show'

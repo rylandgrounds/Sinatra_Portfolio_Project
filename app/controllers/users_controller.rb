@@ -12,7 +12,7 @@ class UsersController < ApplicationController
             redirect to '/signup'
         else
             user = User.create(:username => params[:username], :password => params[:password])
-            session[:username] = user.username
+            session[:user_id] = user.id
             erb :welcome
           end
     end
@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     end
 
     get '/login' do
-        if !session[:username]
+        if !session[:user_id]
             erb :'users/login'
         else
             erb :'users/show'
