@@ -1,6 +1,8 @@
-<%=@anime.title%><br>
-<%=@anime.synopsis%><br>
-<%=@anime.url%><br>
+<img src=<%=anime.image_url%> alt="Anime Image" width="150" height="150" style="vertical-align:middle"> <br>
+<br>:Title <%=@anime.title%><br>
+<br>Synopsis:<%=@anime.synopsis%><br>
+<a href<%=@anime.url%>>Mal Link<</a>br>
+
 <form action="/animes/<%=@anime.id%>" method="post">
   <input id="hidden" type="hidden" name="_method" value="patch">
   <input type="text" name="user_notes">
