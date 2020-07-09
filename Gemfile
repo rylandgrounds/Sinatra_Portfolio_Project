@@ -11,7 +11,7 @@ gem 'dotenv'
 gem 'activemodel'
 gem 'activesupport'
 gem 'foreman'
-
+gem 'bigdecimal', '1.4.2'
 
 
 group :development do
