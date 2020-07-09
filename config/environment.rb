@@ -1,5 +1,5 @@
 ENV['SINATRA_ENV'] ||= "development"
-
+require_all 'app'
 require 'open-uri'
 require 'net/http'
 require 'json'
