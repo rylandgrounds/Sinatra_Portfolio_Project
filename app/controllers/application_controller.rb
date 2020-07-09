@@ -48,7 +48,7 @@ class ApplicationController < Sinatra::Base
   end
     
   def get_data(name)
-    url = "http://api.jikan.moe/v3/search/anime?q=#{name}&limit=5"
+    url = "https://api.jikan.moe/v3/search/anime?q=#{name}&limit=5"
     #get data from jikan api for editing
     uri = URI.parse(url)
     response = Net::HTTP.get_response(uri)
