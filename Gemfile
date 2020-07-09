@@ -8,7 +8,6 @@ gem 'require_all'
 gem 'thin'
 gem 'bcrypt'
 gem 'dotenv'
-gem 'bigdecimal', '1.4.2'
 gem 'activemodel'
 gem 'activesupport'
 gem 'foreman'
@@ -23,7 +22,7 @@ group :development do
 end
 
 group :production do
-  gem 'pg'
+ gem 'pg', '~> 0.20'
 end
 
 
